@@ -11,6 +11,7 @@ export const Auth = ({ type }: { type: "signup" | "signin" }) => {
     password: "",
     name: "",
   });
+
   async function sendRequest() {
     try {
       const response = await axios.post(
@@ -24,8 +25,9 @@ export const Auth = ({ type }: { type: "signup" | "signin" }) => {
       alert("Alert while signup");
     }
   }
+
   return (
-    <div className=" h-screen flex justify-center flex-col">
+    <div className="h-screen flex justify-center flex-col">
       <div className="flex justify-center">
         <div>
           <div className="px-10">
@@ -43,22 +45,22 @@ export const Auth = ({ type }: { type: "signup" | "signin" }) => {
             </div>
           </div>
           <div className="pt-7">
-            {type === "signup" ? (
+            {type === "signup" && (
               <LabelledInput
                 label="Name"
                 placeholder="Mrinal"
-                onChange={(e) => {
+                onChange={(e: ChangeEvent<HTMLInputElement>) => {
                   setPostInputs({
                     ...postInputs,
                     name: e.target.value,
                   });
                 }}
               />
-            ) : null}
+            )}
             <LabelledInput
               label="Email"
               placeholder="mrinal.mann@gmail.com"
-              onChange={(e) => {
+              onChange={(e: ChangeEvent<HTMLInputElement>) => {
                 setPostInputs({
                   ...postInputs,
                   email: e.target.value,
@@ -68,8 +70,8 @@ export const Auth = ({ type }: { type: "signup" | "signin" }) => {
             <LabelledInput
               label="Password"
               placeholder="1246794"
-              type={"password"}
-              onChange={(e) => {
+              type="password"
+              onChange={(e: ChangeEvent<HTMLInputElement>) => {
                 setPostInputs({
                   ...postInputs,
                   password: e.target.value,
@@ -90,14 +92,19 @@ export const Auth = ({ type }: { type: "signup" | "signin" }) => {
   );
 };
 
-interface LabelledInputType {
+interface LabelledInputProps {
   label: string;
   placeholder: string;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
   type?: string;
 }
 
-function LabelledInput({ label, placeholder, onChange, type }) {
+function LabelledInput({
+  label,
+  placeholder,
+  onChange,
+  type,
+}: LabelledInputProps) {
   return (
     <div>
       <label className="block mb-2 text-sm text-black font-semibold pt-3">
@@ -105,9 +112,9 @@ function LabelledInput({ label, placeholder, onChange, type }) {
       </label>
       <input
         onChange={onChange}
-        type="text"
-        id="first_name"
-        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
+        type={type || "text"}
+        id={label.toLowerCase()}
+        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
         placeholder={placeholder}
         required
       />
