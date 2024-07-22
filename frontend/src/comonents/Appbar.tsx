@@ -6,7 +6,7 @@ export const Appbar = () => {
     <div className="border-b flex justify-between px-10 py-3">
       <Link
         to={"/blogs"}
-        className="flex flex-col justify-center cursor-pointer"
+        className="flex flex-col justify-center cursor-pointer font-bold"
       >
         Thought's
       </Link>
