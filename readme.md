@@ -1,4 +1,3 @@
-```md
 # Thought's Blog Site
 
 A blogging platform built with a modular structure, including frontend, backend, and shared common modules.
@@ -19,7 +18,7 @@ Make sure you have the following installed:
 
    ```bash
    git clone https://github.com/mrinal-mann/Thought-s-Blog-Site.git
-   ```
+`
 
 2. **Navigate to the project directory:**
 
